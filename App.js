@@ -4,6 +4,7 @@ import Login from './src/screens/Login';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import OtherPage from './src/screens/OtherPage';
+import { View } from 'react-native';
 
 const Stack = createStackNavigator();
 
