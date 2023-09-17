@@ -1,5 +1,30 @@
-import { useEffect, useState } from "react";
-import { Button, SafeAreaView, Text, TextInput } from "react-native";
+import { useState } from "react";
+import { Button, SafeAreaView, StyleSheet, Text, TextInput, View } from "react-native";
+import CustomButton from "../components/CustomButton";
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#f9b978',
+    },
+    textInput: {
+        width: '80%',
+        borderWidth: 1,
+        borderRadius: 4,
+        padding: 16,
+        margin: 8,
+        backgroundColor: '#fff'
+    },
+    text: {
+        marginLeft: 32,
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: '#392c21',
+        alignSelf: 'flex-start',
+    },
+})
 
 
 const Login = ({ navigation }) => {
@@ -37,26 +62,27 @@ const Login = ({ navigation }) => {
     }
 
     return (
-        <SafeAreaView style={ { marginTop: 20 } }>
+        <SafeAreaView style={ styles.container }>
+            <Text style={ styles.text }>Login</Text>
             <TextInput
                 value={ inputEmailValue }
                 onChangeText={ onChangeEmailValue }
                 onEndEditing={ () => setInputEmailValid(true) }
                 placeholder="Ex: example@teste.com"
+                style={ styles.textInput }
             />
+            <Text style={ styles.text }>Senha</Text>
             <TextInput
                 value={ inputPasswordValue }
                 onChangeText={ onChangePasswordValue }
                 onBlur={ () => setInputPasswordValid(true) }
                 placeholder="Digite sua senha"
+                style={ styles.textInput }
             />
             { inputEmailValid === true ? <></> : <Text>Email não é válido</Text> }
             { inputPasswordValid === true ? <></> : <Text>Senha não é válida</Text> }
 
-            <Button
-                title="Login"
-                onPress={ () => navigation.navigate('Home') }
-            />
+            <CustomButton funcao={ () => navigation.navigate('Home') } title='Login' />
         </SafeAreaView>
     );
 }
