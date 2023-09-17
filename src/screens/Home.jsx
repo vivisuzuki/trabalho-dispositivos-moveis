@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { Button, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import CustomButton from "../components/CustomButton";
 
 const styles = StyleSheet.create({
@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     },
     buttonView: {
         flex: 1,
-        padding: 10, // Espaçamento entre os botões
+        padding: 5
     },
 })
 
@@ -23,13 +23,13 @@ const Home = ({ navigation }) => {
 
     const fetchRickMortyData = async () => {
         try {
-            const response = await axios.get(`https://rickandmortyapi.com/api/character?page=${pagina}`)
+            // const response = await axios.get(`https://rickandmortyapi.com/api/character?page=${pagina}`)
+            const response = await axios.get('https://rickandmortyapi.com/api/character?page=1')
 
         } catch (error) {
             console.log('Erro ao buscar personagens: ', error)
         }
     }
-
 
     return (
         <SafeAreaView style={ { marginTop: 20 } }>
@@ -40,7 +40,10 @@ const Home = ({ navigation }) => {
                         onPress={ () => navigation.navigate('Detalhes') }
                     />
                 </View> */}
-            <CustomButton funcao={ () => navigation.popToTop() } title='Logout' />
+            <View style={ styles.buttonContainer }>
+                <CustomButton funcao={ () => navigation.popToTop() } title='Logout' />
+                <CustomButton funcao={ () => navigation.navigate('Outra Página') } title='Outra Página' />
+            </View>
         </SafeAreaView>
     );
 }

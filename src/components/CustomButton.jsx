@@ -21,7 +21,6 @@ const CustomButton = ({ funcao, title }) => {
                 <Text style={ styles.buttonTitle }>{ title }</Text>
             </View>
         </TouchableOpacity>
-
     );
 }
 
