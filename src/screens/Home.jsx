@@ -12,7 +12,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
-        padding: 10,
+        backgroundColor: "#fff",
+        padding: 5,
     },
     buttonView: {
         flex: 1,
@@ -26,7 +27,11 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 20,
+        padding: 10,
+        borderWidth: 5,
+        borderColor: '#62a4ab',
+        borderRadius: 5,
+        margin: 5,
     },
     textView: {
         flexDirection: 'row',
@@ -49,7 +54,6 @@ const styles = StyleSheet.create({
 const Home = ({ navigation }) => {
 
     const [characters, setCharacters] = useState();
-
 
     const fetchCharacters = async () => {
         try {
@@ -80,10 +84,10 @@ const Home = ({ navigation }) => {
                 <Image
                     style={ styles.imageCharacter }
                     source={ {
-                        uri: `${character.image}`,
+                        uri: `${image}`,
                     } }
                 />
-                <CustomButton funcao={ () => navigation.navigate('Detalhes') } title='Details' />
+                <CustomButton funcao={ () => navigation.navigate('Detalhes', { id }) } title='Details' />
             </View>
         )
     }
